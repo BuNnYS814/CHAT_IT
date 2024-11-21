@@ -3,52 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPT Interface</title>
+    <title>ZEN AI</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
         body {
-            background-color: #1a1a2e;
-            color: #fff;
-            font-family: Arial, sans-serif;
+            background-color: #002d2d; 
+            color: #a8ff60; 
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items:  center;
             height: 100vh;
-            margin: 0;
+            width: 100vw;
         }
         .container {
             text-align: center;
-            width: 400px;
-            background-color: #16213e;
-            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            background-color: #003939; 
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgb(255, 255, 255);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
         }
         .header {
-            font-size: 24px;
+            font-size: 32px;
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
         .header img {
-            vertical-align: middle;
+            vertical-align: left;
             margin-right: 10px;
+            width: 300px;
+            height: 300px;
         }
         .prompt {
-            margin-bottom: 20px;
+            font-size: 18px;
+            margin-bottom: 30px;
         }
         .input-container {
             display: flex;
             align-items: center;
+            width: 100%;
+            max-width: 600px;
         }
         .input-container input {
             flex: 1;
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 5px;
             margin-right: 10px;
+            font-size: 16px;
+            background-color: #004a4a; 
+            outline: none;
         }
         .input-container button {
-            background-color: #0f3460;
+            background-color: #004a4a;
             border: none;
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
         }
@@ -56,19 +74,27 @@
             width: 20px;
             height: 20px;
         }
+        #response {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #a8ff60;
+            max-width: 600px;
+            width: 100%;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <img src="robot-icon.png" alt="Robot Icon">
-            GPT Interface
+            <img src="https://cf-sparkai-live.s3.amazonaws.com/users/10405897/spark_ai/o_bg-remover-gen_2pA5MY5Q4rjGTei9KKulCDLVVIH.png" alt="Robot Icon">
+            ZEN AI
         </div>
         <div class="prompt">Start a conversation by typing a message below.</div>
         <div class="input-container">
             <input type="text" id="question" placeholder="Type your message...">
             <button onclick="sendQuestion()">
-                <img src="send-icon.png" alt="Send Icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/7878/7878341.png" alt="Send Icon"> 
             </button>
         </div>
         <p id="response"></p>
@@ -84,11 +110,11 @@
                     },
                     body: JSON.stringify({ question })
                 });
-        
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-        
+
                 const data = await response.json();
                 document.getElementById('response').innerText = data.response;
             } catch (error) {
@@ -96,7 +122,6 @@
                 document.getElementById('response').innerText = 'Error: ' + error.message;
             }
         }
-        
     </script>
 </body>
 </html>
